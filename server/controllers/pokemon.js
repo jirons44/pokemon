@@ -1,22 +1,21 @@
-/* eslint-disable new-cap, consistent-return */
+/* eslint-disable new-cap */
 
 import express from 'express';
 import Pokemon from '../models/pokemon';
-
+import passport from 'passport';
 const router = module.exports = express.Router();
+const auth = passport.authenticate('jwt', { session: false });
 
-// create
-router.post('/', (req, res) => {
-  const pokemon = new Pokemon(req.body);
-  console.log('req.body********: ', req.body);
-  pokemon.save(() => {
-    console.log('pokeman1111: ', { pokemon });
+// index
+router.get('/', auth, (req, res) => {
+  Pokemon.find().exec((err, pokemon) => {
     res.send({ pokemon });
   });
 });
 
-router.get('/', (req, res) => {
-  Pokemon.find().exec((err, pokemon) => {
+// create
+router.post('/', auth, (req, res) => {
+  Pokemon.create(req.body, (err, pokemon) => {
     res.send({ pokemon });
   });
 });

@@ -20,6 +20,8 @@ export default () => (
         <ul className="nav navbar-nav">
         </ul>
         <ul className="nav navbar-nav navbar-right">
+          <li><Link to="/login"><i className="fa fa-users fa-fw"></i> Login</Link></li>
+          <li><Link to="/register"><i className="fa fa-users fa-fw"></i> Register</Link></li>
           <li><Link to="/pokemon"><i className="fa fa-users fa-fw"></i> Pokemon</Link></li>
           <li><Link to="/"><i className="fa fa-home fa-fw"></i> Home</Link></li>
           <li><Link to="/about"><i className="fa fa-hashtag fa-fw"></i> About</Link></li>

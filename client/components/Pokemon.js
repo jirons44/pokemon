@@ -22,7 +22,7 @@ export default class Pokemon extends React.Component {
 
   componentWillUnmount() {
     console.log('inside componentWillUnmount  *******');
-    axios.get('/pokemon/api/pokemon')
+    axios.get('/api/pokemon')
     .then((rsp) => {
       this.setState({ pokemon: rsp.data.pokemon });
     });
