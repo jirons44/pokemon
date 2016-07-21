@@ -14,7 +14,7 @@ export default class Pokemon extends React.Component {
 
   componentDidMount() {
     console.log('inside componentDidMount  *******');
-    axios.get('/pokemon/api/pokemon')
+    axios.get('/api/pokemon')
     .then((rsp) => {
       this.setState({ pokemon: rsp.data.pokemon });
     });
@@ -32,12 +32,12 @@ export default class Pokemon extends React.Component {
     e.preventDefault();
     const name = this.refs.name.value;
     const url = this.refs.url.value;
-    axios.post('/pokemon/api/pokemon', { name, url })
+    axios.post('/api/pokemon', { name, url })
     .then(() => {
       this.setState({ errors: [] });
     })
     .then(() => {
-      return axios.get('/pokemon/api/pokemon');
+      return axios.get('/api/pokemon');
     })
     .then((rsp) => {
       this.setState({ pokemon: rsp.data.pokemon });
@@ -81,7 +81,7 @@ export default class Pokemon extends React.Component {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>URL</th>
+                  <th>Image</th>
                 </tr>
               </thead>
               <tbody>

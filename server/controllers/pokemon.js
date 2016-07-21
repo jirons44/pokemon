@@ -6,7 +6,7 @@ import Pokemon from '../models/pokemon';
 const router = module.exports = express.Router();
 
 // create
-router.post('/api/pokemon', (req, res) => {
+router.post('/', (req, res) => {
   const pokemon = new Pokemon(req.body);
   console.log('req.body********: ', req.body);
   pokemon.save(() => {
@@ -15,7 +15,7 @@ router.post('/api/pokemon', (req, res) => {
   });
 });
 
-router.get('/api/pokemon', (req, res) => {
+router.get('/', (req, res) => {
   Pokemon.find().exec((err, pokemon) => {
     res.send({ pokemon });
   });
